@@ -67,30 +67,33 @@
 #define ST7735_USERESET
 
 // Control pins
-#define ST7735_PORT            (1)
-#define ST7735_RS_PIN          (27)
-#define ST7735_SDA_PIN         (26)
-#define ST7735_SCL_PIN         (25)
-#define ST7735_CS_PIN          (24)
-#define ST7735_BL_PIN          (31)
+#define ST7735_DATA_PORT       (0)
+#define ST7735_RS_PIN          (16)
+#define ST7735_SDA_PIN         (23)
+#define ST7735_SCL_PIN         (17)
+#define ST7735_CS_PIN          (19)
+
+#define ST7735_CTRL_PORT       (1)
+#define ST7735_BL_PIN          (16)
 #ifdef ST7735_USERESET
-	#define ST7735_RES_PIN         (28)
+	#define ST7735_RES_PIN         (22)
 #endif
 
 // Macros for control line state
-#define CLR_RS      do { LPC_GPIO->CLR[ST7735_PORT] = (1 << ST7735_RS_PIN); } while(0)
-#define SET_RS      do { LPC_GPIO->SET[ST7735_PORT] = (1 << ST7735_RS_PIN); } while(0)
-#define CLR_SDA     do { LPC_GPIO->CLR[ST7735_PORT] = (1 << ST7735_SDA_PIN); } while(0)
-#define SET_SDA     do { LPC_GPIO->SET[ST7735_PORT] = (1 << ST7735_SDA_PIN); } while(0)
-#define CLR_SCL     do { LPC_GPIO->CLR[ST7735_PORT] = (1 << ST7735_SCL_PIN); } while(0)
-#define SET_SCL     do { LPC_GPIO->SET[ST7735_PORT] = (1 << ST7735_SCL_PIN); } while(0)
-#define CLR_CS      do { LPC_GPIO->CLR[ST7735_PORT] = (1 << ST7735_CS_PIN); } while(0)
-#define SET_CS      do { LPC_GPIO->SET[ST7735_PORT] = (1 << ST7735_CS_PIN); } while(0)
-#define CLR_BL      do { LPC_GPIO->CLR[ST7735_PORT] = (1 << ST7735_BL_PIN); } while(0)
-#define SET_BL      do { LPC_GPIO->SET[ST7735_PORT] = (1 << ST7735_BL_PIN); } while(0)
+#define CLR_RS      do { LPC_GPIO->CLR[ST7735_DATA_PORT] = (1 << ST7735_RS_PIN); } while(0)
+#define SET_RS      do { LPC_GPIO->SET[ST7735_DATA_PORT] = (1 << ST7735_RS_PIN); } while(0)
+#define CLR_SDA     do { LPC_GPIO->CLR[ST7735_DATA_PORT] = (1 << ST7735_SDA_PIN); } while(0)
+#define SET_SDA     do { LPC_GPIO->SET[ST7735_DATA_PORT] = (1 << ST7735_SDA_PIN); } while(0)
+#define CLR_SCL     do { LPC_GPIO->CLR[ST7735_DATA_PORT] = (1 << ST7735_SCL_PIN); } while(0)
+#define SET_SCL     do { LPC_GPIO->SET[ST7735_DATA_PORT] = (1 << ST7735_SCL_PIN); } while(0)
+#define CLR_CS      do { LPC_GPIO->CLR[ST7735_DATA_PORT] = (1 << ST7735_CS_PIN); } while(0)
+#define SET_CS      do { LPC_GPIO->SET[ST7735_DATA_PORT] = (1 << ST7735_CS_PIN); } while(0)
+
+#define CLR_BL      do { LPC_GPIO->CLR[ST7735_CTRL_PORT] = (1 << ST7735_BL_PIN); } while(0)
+#define SET_BL      do { LPC_GPIO->SET[ST7735_CTRL_PORT] = (1 << ST7735_BL_PIN); } while(0)
 #ifdef ST7735_USERESET
-  #define CLR_RES   do { LPC_GPIO->CLR[ST7735_PORT] = (1 << ST7735_RES_PIN); } while(0)
-  #define SET_RES   do { LPC_GPIO->SET[ST7735_PORT] = (1 << ST7735_RES_PIN); } while(0)
+  #define CLR_RES   do { LPC_GPIO->CLR[ST7735_CTRL_PORT] = (1 << ST7735_RES_PIN); } while(0)
+  #define SET_RES   do { LPC_GPIO->SET[ST7735_CTRL_PORT] = (1 << ST7735_RES_PIN); } while(0)
 #endif
 
 // System control functions

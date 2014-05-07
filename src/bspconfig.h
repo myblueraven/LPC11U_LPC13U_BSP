@@ -499,7 +499,7 @@ extern "C" {
                               CFG_BSP_PRINTF_UART or CFG_BSP_PRINTF_USBCDC are
                               selected.
     -----------------------------------------------------------------------*/
-    #define CFG_BSP_CMDUART
+    //#define CFG_BSP_CMDUART
     #define CFG_BSP_CMDUART_MAXMSGSIZE    (256)
     #define CFG_BSP_CMDUART_DROPCR        (0)
     #define CFG_BSP_CMDUART_ENABLEIRQ     (0)
@@ -543,7 +543,7 @@ extern "C" {
     CFG_BSP_TFTLCD_TS_KEYPADDELAY   The delay in milliseconds between key
                                 presses in dialogue boxes
     ----------------------------------------------------------------------*/
-//    #define CFG_BSP_TFTLCD
+    #define CFG_BSP_TFTLCD
     #define CFG_BSP_TFTLCD_INCLUDESMALLFONTS   (0)
     #define CFG_BSP_TFTLCD_USEAAFONTS          (0)
     #define CFG_BSP_TFTLCD_TS_DEFAULTTHRESHOLD (50)
@@ -710,7 +710,7 @@ extern "C" {
     ENABLE Multi channel PWM
 
     -----------------------------------------------------------------------*/
-    #define CFG_BSP_MCPWM
+//    #define CFG_BSP_MCPWM
 
 /*=========================================================================*/
 

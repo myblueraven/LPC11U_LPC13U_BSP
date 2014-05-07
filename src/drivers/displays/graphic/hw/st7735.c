@@ -40,9 +40,10 @@
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 /**************************************************************************/
+#include "st7735.h"
+
 #ifdef CFG_BSP_LCD_ST7735
 
-#include "st7735.h"
 #include "core/delay/delay.h"
 #include "core/gpio/gpio.h"
 
@@ -468,13 +469,14 @@ void st7735InitDisplayG(void)
 void lcdInit(void)
 {
   // Set control pins to output
-  GPIOSetDir(ST7735_PORT, ST7735_RS_PIN, 1);
-  GPIOSetDir(ST7735_PORT, ST7735_SDA_PIN, 1);
-  GPIOSetDir(ST7735_PORT, ST7735_SCL_PIN, 1);
-  GPIOSetDir(ST7735_PORT, ST7735_CS_PIN, 1);
-  GPIOSetDir(ST7735_PORT, ST7735_BL_PIN, 1);
+  gpioSetDir(ST7735_DATA_PORT, ST7735_RS_PIN, 1);
+  gpioSetDir(ST7735_DATA_PORT, ST7735_SDA_PIN, 1);
+  gpioSetDir(ST7735_DATA_PORT, ST7735_SCL_PIN, 1);
+  gpioSetDir(ST7735_DATA_PORT, ST7735_CS_PIN, 1);
+
+  gpioSetDir(ST7735_CTRL_PORT, ST7735_BL_PIN, 1);
 #ifdef ST7735_USERESET
-  GPIOSetDir(ST7735_PORT, ST7735_RES_PIN, 1);
+  gpioSetDir(ST7735_CTRL_PORT, ST7735_RES_PIN, 1);
 #endif
 
   // Set pins low by default (except reset)
@@ -507,7 +509,8 @@ void lcdInit(void)
 //  st7735InitDisplayG();
 
   // Fill black
-  lcdFillRGB(COLOR_BLACK);
+//  lcdFillRGB(COLOR_BLACK);
+  lcdFillRGB(ST7735_GREEN);
 }
 
 /*************************************************/
@@ -518,11 +521,11 @@ void lcdBacklight(bool state)
   // to control the backlight, you made need to invert
   // the values below
   if (state)
-    // CLR_BL;
-    SET_BL;
-  else
-    // SET_BL;
     CLR_BL;
+    // SET_BL;
+  else
+    SET_BL;
+    // CLR_BL;
 }
 
 /*************************************************/

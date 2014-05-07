@@ -39,9 +39,10 @@
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 /**************************************************************************/
+#include "hx8347g.h"
+
 #ifdef CFG_BSP_LCD_HX8347G
 
-#include "hx8347g.h"
 #include "core/delay/delay.h"
 #include "core/gpio/gpio.h"
 // #include "drivers/displays/graphic/touchscreen.h"

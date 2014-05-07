@@ -40,10 +40,10 @@
     SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 /**************************************************************************/
+#include "hx8340b.h"
 
 #ifdef CFG_BSP_LCD_HX8340B
 
-#include "hx8340b.h"
 #include "core/delay/delay.h"
 #include "core/gpio/gpio.h"
 
