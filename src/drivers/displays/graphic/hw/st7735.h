@@ -39,6 +39,9 @@
 #include "bspconfig.h"
 #include "drivers/displays/graphic/lcd.h"
 
+#define ST7735_PANEL_WIDTH  128
+#define ST7735_PANEL_HEIGHT 160
+
 /**************************************************************************
     ST7735 CONNECTOR - HY-1.8
     -----------------------------------------------------------------------

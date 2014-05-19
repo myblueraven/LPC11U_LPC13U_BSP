@@ -48,7 +48,7 @@
 #include "core/gpio/gpio.h"
 
 static lcdOrientation_t lcdOrientation = LCD_ORIENTATION_PORTRAIT;
-static lcdProperties_t st7735Properties = { 128, 160, false, false, false, true, true };
+static lcdProperties_t st7735Properties = { ST7735_PANEL_WIDTH, ST7735_PANEL_HEIGHT, false, true, false, true, true };
 
 /*************************************************/
 /* Private Methods                               */
@@ -508,9 +508,11 @@ void lcdInit(void)
   st7735InitDisplayR();
 //  st7735InitDisplayG();
 
+  lcdSetOrientation(LCD_ORIENTATION_PORTRAIT);
+
   // Fill black
-//  lcdFillRGB(COLOR_BLACK);
-  lcdFillRGB(ST7735_GREEN);
+  lcdFillRGB(COLOR_BLACK);
+//  lcdFillRGB(ST7735_GREEN);
 }
 
 /*************************************************/
@@ -659,7 +661,26 @@ uint16_t lcdGetPixel(uint16_t x, uint16_t y)
 /*************************************************/
 void lcdSetOrientation(lcdOrientation_t orientation)
 {
-  // ToDo
+  if(orientation == LCD_ORIENTATION_PORTRAIT)
+  {
+	  st7735WriteCmd(ST7735_MADCTL);  // Memory Data Access Control
+	  st7735WriteData(0x00);          // 000 - Normal
+	                                  // 0 - Vertical refresh top to bottom
+	                                  // 0 - RGB order
+	                                  // 0 - Horizontal refresh left to right
+	  st7735Properties.width = ST7735_PANEL_WIDTH;
+	  st7735Properties.height = ST7735_PANEL_HEIGHT;
+  }
+  else if (orientation == LCD_ORIENTATION_LANDSCAPE)
+  {
+	  st7735WriteCmd(ST7735_MADCTL);  // Memory Data Access Control
+	  st7735WriteData(0xA0);          // 101 - X-Y Exchange, Y-Mirror
+	                                  // 0 - Vertical refresh top to bottom
+	                                  // 0 - RGB order
+	                                  // 0 - Horizontal refresh left to right
+	  st7735Properties.width = ST7735_PANEL_HEIGHT;
+	  st7735Properties.height = ST7735_PANEL_WIDTH;
+  }
 }
 
 /*************************************************/
