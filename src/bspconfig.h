@@ -66,7 +66,7 @@ extern "C" {
     -----------------------------------------------------------------------*/
     #define CFG_BSP_CODEBASE_VERSION_MAJOR      (0)
     #define CFG_BSP_CODEBASE_VERSION_MINOR      (1)
-    #define CFG_BSP_CODEBASE_VERSION_REVISION   (5)
+    #define CFG_BSP_CODEBASE_VERSION_REVISION   (6)
 /*=========================================================================*/
 
 /*=========================================================================
@@ -248,23 +248,6 @@ extern "C" {
 
 
 /*=========================================================================
-    ON-BOARD LED
-    -----------------------------------------------------------------------
-
-    CFG_BSP_LED_PORT              The port for the on board LED
-    CFG_BSP_LED_PIN               The pin for the on board LED
-    CFG_BSP_LED_ON                The pin state to turn the LED on (0 = low, 1 = high)
-    CFG_BSP_LED_OFF               The pin state to turn the LED off (0 = low, 1 = high)
-
-    -----------------------------------------------------------------------*/
-    #define CFG_BSP_LED_PORT                  (0)
-    #define CFG_BSP_LED_PIN                   (7)
-    #define CFG_BSP_LED_ON                    (1)
-    #define CFG_BSP_LED_OFF                   (0)
-/*=========================================================================*/
-
-
-/*=========================================================================
     ADC
     -----------------------------------------------------------------------
 
@@ -308,6 +291,7 @@ extern "C" {
     CFG_BSP_SSP_SCK1_LOCATION     The location of the SCK pin for SSP1
 
     -----------------------------------------------------------------------*/
+/*
     #define CFG_BSP_SSP_SCK0_0_6            (6)     // Used by USBConnect
     #define CFG_BSP_SSP_SCK0_0_10           (10)    // Used by SWD
     #define CFG_BSP_SSP_SCK0_1_29           (29)
@@ -327,9 +311,10 @@ extern "C" {
 
     // Set the phase and polarity for SSP0 and SSP1
     #define CFG_BSP_SSP_CPOL0               (0)
-    #define CFG_BSP_SSP_CPHA0               (1)   /* CC3000 = Mode 1 */
+    #define CFG_BSP_SSP_CPHA0               (1)   // CC3000 = Mode 1
     #define CFG_BSP_SSP_CPOL1               (0)
     #define CFG_BSP_SSP_CPHA1               (0)
+*/
 /*=========================================================================*/
 
 
