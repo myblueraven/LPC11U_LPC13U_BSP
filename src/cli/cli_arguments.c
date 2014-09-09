@@ -104,7 +104,7 @@ int getNumber (char *s, int32_t *result)
     else
     {
       // "Malformed number. Must be decimal number or hex value preceeded by '0x'"
-      printf ("%s%s", STRING(LOCALISATION_TEXT_Malformed_Number), CFG_BSP_PRINTF_NEWLINE);
+      printf ("%s\n", STRING(LOCALISATION_TEXT_Malformed_Number));
       return 0;
     }
   }

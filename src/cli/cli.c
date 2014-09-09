@@ -169,7 +169,7 @@ void cliRx(uint8_t c)
         // it to the handler for processing.
         *cli_buffer_ptr = '\0';
         #if CFG_BSP_INTERFACE_SILENTMODE == 0
-        printf("%s", CFG_BSP_PRINTF_NEWLINE);
+        printf("\n");
         #endif
         cliParse((char *)cli_buffer);
         cli_buffer_ptr = cli_buffer;
@@ -208,11 +208,11 @@ void cliRx(uint8_t c)
 static void cliMenu()
 {
   #if CFG_BSP_INTERFACE_SILENTMODE == 0
-  printf(CFG_BSP_PRINTF_NEWLINE);
+  printf("\n");
   printf(CFG_BSP_INTERFACE_PROMPT);
   #endif
   #if CFG_BSP_INTERFACE_CONFIRMREADY == 1
-  printf("%s%s", CFG_BSP_INTERFACE_CONFIRMREADY_TEXT, CFG_BSP_PRINTF_NEWLINE);
+  printf("%s\n", CFG_BSP_INTERFACE_CONFIRMREADY_TEXT);
   #endif
 }
 
@@ -246,27 +246,27 @@ void cliParse(char *cmd)
         if ((argc == 2) && !strcmp (argv [1], "?"))
         {
           // Display parameter help menu on 'command ?'
-          printf ("%s%s%s", cli_tbl[i].description, CFG_BSP_PRINTF_NEWLINE, CFG_BSP_PRINTF_NEWLINE);
-          printf ("%s%s", cli_tbl[i].parameters, CFG_BSP_PRINTF_NEWLINE);
+          printf ("%s\n\n", cli_tbl[i].description);
+          printf ("%s\n", cli_tbl[i].parameters);
         }
         else if ((argc - 1) < cli_tbl[i].minArgs)
         {
           // Too few arguments supplied
           #if CFG_BSP_INTERFACE_SHORTERRORS == 1
-          printf ("%s%s", CFG_BSP_INTERFACE_SHORTERRORS_TOOFEWARGS, CFG_BSP_PRINTF_NEWLINE);
+          printf ("%s\n", CFG_BSP_INTERFACE_SHORTERRORS_TOOFEWARGS);
           #else
-          printf ("%s (%s %d)%s", STRING(LOCALISATION_TEXT_Too_few_arguments), STRING(LOCALISATION_TEXT_Expected), cli_tbl[i].minArgs, CFG_BSP_PRINTF_NEWLINE);
-          printf ("%s'%s ?' %s%s%s", CFG_BSP_PRINTF_NEWLINE, cli_tbl[i].command, STRING(LOCALISATION_TEXT_for_more_information), CFG_BSP_PRINTF_NEWLINE, CFG_BSP_PRINTF_NEWLINE);
+          printf ("%s (%s %d)\n", STRING(LOCALISATION_TEXT_Too_few_arguments), STRING(LOCALISATION_TEXT_Expected), cli_tbl[i].minArgs);
+          printf ("\n'%s ?' %s\n\n", cli_tbl[i].command, STRING(LOCALISATION_TEXT_for_more_information));
           #endif
         }
         else if ((argc - 1) > cli_tbl[i].maxArgs)
         {
           // Too many arguments supplied
           #if CFG_BSP_INTERFACE_SHORTERRORS == 1
-          printf ("%s%s", CFG_BSP_INTERFACE_SHORTERRORS_TOOMANYARGS, CFG_BSP_PRINTF_NEWLINE);
+          printf ("%s\n", CFG_BSP_INTERFACE_SHORTERRORS_TOOMANYARGS);
           #else
-          printf ("%s (%s %d)%s", STRING(LOCALISATION_TEXT_Too_many_arguments), STRING(LOCALISATION_TEXT_Maximum), cli_tbl[i].maxArgs, CFG_BSP_PRINTF_NEWLINE);
-          printf ("%s'%s ?' %s%s%s", CFG_BSP_PRINTF_NEWLINE, cli_tbl[i].command, STRING(LOCALISATION_TEXT_for_more_information), CFG_BSP_PRINTF_NEWLINE, CFG_BSP_PRINTF_NEWLINE);
+          printf ("%s (%s %d)\n", STRING(LOCALISATION_TEXT_Too_many_arguments), STRING(LOCALISATION_TEXT_Maximum), cli_tbl[i].maxArgs);
+          printf ("\n'%s ?' %s\n\n", cli_tbl[i].command, STRING(LOCALISATION_TEXT_for_more_information));
           #endif
         }
         else
@@ -290,11 +290,11 @@ void cliParse(char *cmd)
   }
   // Command not recognized
   #if CFG_BSP_INTERFACE_SHORTERRORS == 1
-  printf ("%s%s", CFG_BSP_INTERFACE_SHORTERRORS_UNKNOWNCOMMAND, CFG_BSP_PRINTF_NEWLINE);
+  printf ("%s\n", CFG_BSP_INTERFACE_SHORTERRORS_UNKNOWNCOMMAND);
   #else
-  printf("%s: '%s'%s%s", STRING(LOCALISATION_TEXT_Command_Not_Recognized), cmd, CFG_BSP_PRINTF_NEWLINE, CFG_BSP_PRINTF_NEWLINE);
+  printf("%s: '%s'\n\n", STRING(LOCALISATION_TEXT_Command_Not_Recognized), cmd);
   #if CFG_BSP_INTERFACE_SILENTMODE == 0
-  printf("%s%s", STRING(LOCALISATION_TEXT_Type_QUESTION_for_a_list_of), CFG_BSP_PRINTF_NEWLINE);
+  printf("%s\n", STRING(LOCALISATION_TEXT_Type_QUESTION_for_a_list_of));
   #endif
   #endif
 
@@ -344,19 +344,19 @@ void cmd_help(uint8_t argc, char **argv)
 {
   size_t i;
 
-  printf("%s      %s%s", STRING(LOCALISATION_TEXT_Command), STRING(LOCALISATION_TEXT_Description), CFG_BSP_PRINTF_NEWLINE);
-  printf("-------      -----------%s", CFG_BSP_PRINTF_NEWLINE);
+  printf("%s      %s\n", STRING(LOCALISATION_TEXT_Command), STRING(LOCALISATION_TEXT_Description));
+  printf("-------      -----------\n");
 
   // Display full command list
   for (i=0; cli_tbl[i].command != NULL; i++)
   {
     if (!cli_tbl[i].hidden)
     {
-      printf ("%-10s   %s%s", cli_tbl[i].command, cli_tbl[i].description, CFG_BSP_PRINTF_NEWLINE);
+      printf ("%-10s   %s\n", cli_tbl[i].command, cli_tbl[i].description);
     }
   }
 
-  printf("%s%s", STRING(LOCALISATION_TEXT_Command_parameters_can_be_seen), CFG_BSP_PRINTF_NEWLINE);
+  printf("%s\n", STRING(LOCALISATION_TEXT_Command_parameters_can_be_seen));
 }
 
 #endif

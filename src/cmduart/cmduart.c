@@ -118,7 +118,7 @@ void cmduartRx(uint8_t c)
         // it to the handler for processing.
         *cmduart_buffer_ptr = '\0';
         if (cmduart_silentmode == false)
-        	cu_printf("%s", CFG_BSP_PRINTF_NEWLINE);
+        	cu_printf("\n");
         cmduartParse((char *)cmduart_buffer);
         cmduart_buffer_ptr = cmduart_buffer;
         break;
@@ -161,7 +161,7 @@ void cmduartParse(char *cmd)
 
   if(argv[i] == NULL)
   {
-	  cu_printf ("$PXERR,%s*00%s", CFG_BSP_CMDUART_SHORTERRORS_CHECKSUMMISSING, CFG_BSP_PRINTF_NEWLINE);
+	  cu_printf ("$PXERR,%s*00\n", CFG_BSP_CMDUART_SHORTERRORS_CHECKSUMMISSING);
 	  return;
   }
 
@@ -174,12 +174,12 @@ void cmduartParse(char *cmd)
         if (argc < cmduart_tbl[i].minArgs)
         {
           // Too few arguments supplied
-          cu_printf ("$PXERR,%s*00%s", CFG_BSP_CMDUART_SHORTERRORS_TOOFEWARGS, CFG_BSP_PRINTF_NEWLINE);
+          cu_printf ("$PXERR,%s*00\n", CFG_BSP_CMDUART_SHORTERRORS_TOOFEWARGS);
         }
         else if (argc > cmduart_tbl[i].maxArgs)
         {
           // Too many arguments supplied
-          cu_printf ("$PXERR,%s*00%s", CFG_BSP_CMDUART_SHORTERRORS_TOOMANYARGS, CFG_BSP_PRINTF_NEWLINE);
+          cu_printf ("$PXERR,%s*00\n", CFG_BSP_CMDUART_SHORTERRORS_TOOMANYARGS);
         }
         else
         {
@@ -198,7 +198,7 @@ void cmduartParse(char *cmd)
       }
   }
   // Command not recognized
-  cu_printf ("$PXERR,%s*00%s", CFG_BSP_CMDUART_SHORTERRORS_UNKNOWNCOMMAND, CFG_BSP_PRINTF_NEWLINE);
+  cu_printf ("$PXERR,%s*00\n", CFG_BSP_CMDUART_SHORTERRORS_UNKNOWNCOMMAND);
 }
 
 /**************************************************************************/

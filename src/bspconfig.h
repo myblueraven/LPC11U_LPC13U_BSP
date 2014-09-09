@@ -348,8 +348,7 @@ extern "C" {
     CFG_BSP_INTERFACE_IRQPORT     The gpio port for the IRQ/busy pin
     CFG_BSP_INTERFACE_IRQPIN      The gpio pin number for the IRQ/busy pin
     CFG_BSP_INTERFACE_SHORTERRORS If this is enabled only short 1 character
-                              error messages will be returned (followed
-                              by CFG_BSP_PRINTF_NEWLINE), rather than more
+                              error messages will be returned, rather than more
                               verbose error messages.  The specific
                               characters used are defined below.
     CFG_BSP_INTERFACE_CONFIRMREADY  If this is set to 1 a text confirmation
@@ -432,8 +431,7 @@ extern "C" {
     CFG_BSP_INTERFACE_IRQPORT     The gpio port for the IRQ/busy pin
     CFG_BSP_INTERFACE_IRQPIN      The gpio pin number for the IRQ/busy pin
     CFG_BSP_INTERFACE_SHORTERRORS If this is enabled only short 1 character
-                              error messages will be returned (followed
-                              by CFG_BSP_PRINTF_NEWLINE), rather than more
+                              error messages will be returned, rather than more
                               verbose error messages.  The specific
                               characters used are defined below.
     CFG_BSP_INTERFACE_CONFIRMREADY  If this is set to 1 a text confirmation
