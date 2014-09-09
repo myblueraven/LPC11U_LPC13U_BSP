@@ -58,11 +58,11 @@
 
 #include "cli.h"
 
-#ifdef CFG_BSP_PRINTF_UART
+#ifdef CFG_LIB_PRINTF_UART
 #include "core/uart/uart.h"
 #endif
 
-#ifdef CFG_BSP_PRINTF_USBCDC
+#ifdef CFG_LIB_PRINTF_USBCDC
   #include "core/usb/usbd.h"
   #include "core/usb/usb_cdc.h"
 #endif
