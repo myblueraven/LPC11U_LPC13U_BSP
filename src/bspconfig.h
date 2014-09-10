@@ -367,7 +367,7 @@ extern "C" {
 
     NOTE:                     The command-line interface will use either
                               USB-CDC or UART depending on whether
-                              CFG_BSP_PRINTF_UART or CFG_BSP_PRINTF_USBCDC are
+                              CFG_LIB_PRINTF_UART or CFG_LIB_PRINTF_USBCDC are
                               selected.
     -----------------------------------------------------------------------*/
     #define CFG_BSP_INTERFACE

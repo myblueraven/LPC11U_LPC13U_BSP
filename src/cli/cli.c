@@ -93,7 +93,7 @@ void cliPoll()
   }
   #endif
 
-  #if defined(CFG_BSP_USB) && defined(CFG_BSP_PRINTF_USBCDC)
+  #if defined(CFG_LIB_USB) && defined(CFG_LIB_PRINTF_USBCDC)
   if (usb_isConfigured())
   {
     uint8_t c;
